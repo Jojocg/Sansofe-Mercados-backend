@@ -8,7 +8,12 @@ require("./db");
 // Handles http requests (express is node js framework)
 // https://www.npmjs.com/package/express
 const express = require("express");
+
+
+// Se importan los modelos para que aparezcan en compass
 const User = require("./models/User.model");
+const Town = require("./models/Town.model");
+const Market = require("./models/Market.model");
 
 const app = express();
 
