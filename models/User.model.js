@@ -18,6 +18,10 @@ const userSchema = new Schema(
       type: String,
       required: [true, "Name is required."],
     },
+    favs: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Market',
+    }]
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`
