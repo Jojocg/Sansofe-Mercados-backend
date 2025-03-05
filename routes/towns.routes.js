@@ -10,7 +10,7 @@ const { getAllTowns,
 
 router.get('/', getAllTowns)
 router.get('/:id', getOneTown)
-router.post('/:id', createTown)
+router.post('/', createTown)
 router.put('/:id', updateTown)
 router.delete('/:id', deleteTown)
 

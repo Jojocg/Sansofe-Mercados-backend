@@ -1,4 +1,5 @@
 const Town = require('../models/Town.model');
+const mongoose = require("mongoose");
 
 async function getAllTowns(req, res) {
     try {
@@ -15,6 +16,11 @@ async function getAllTowns(req, res) {
 }
 
 async function getOneTown(req, res) {
+    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+        res.status(400).json({ message: 'Specified id is not valid' });
+        return;
+    }
+
     try {
         const town = await Town.findById(req.params.id)
         if (town) {
@@ -39,6 +45,11 @@ async function createTown(req, res) {
 }
 
 async function updateTown(req, res) {
+    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+        res.status(400).json({ message: 'Specified id is not valid' });
+        return;
+    }
+    
     try {
         const updatedTown = await Town.findByIdAndUpdate(req.params.id, req.body, { new: true })
         return res.status(200).json({ message: 'Municipio actualizado', updatedTown: updatedTown })
@@ -49,6 +60,11 @@ async function updateTown(req, res) {
 }
 
 async function deleteTown(req, res) {
+    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+        res.status(400).json({ message: 'Specified id is not valid' });
+        return;
+    }
+
     try {
         const town = await Town.findByIdAndDelete(req.params.id)
         return res.status(204).json({ message: 'Municipio eliminado'})
