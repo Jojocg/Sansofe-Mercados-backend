@@ -17,6 +17,9 @@ const marketSchema = new Schema(
     timetable: {
         type: String
     },
+    description: {
+      type: String
+    },
     town: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Town',
