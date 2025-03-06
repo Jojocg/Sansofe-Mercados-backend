@@ -23,7 +23,19 @@ function getTokenFromHeaders(req) {
   return null;
 }
 
+const isAdmin = (req, res, next) => {
+  // Este middleware debe usarse después del middleware isAuthenticated
+  // que añade req.payload con la información del usuario
+  
+  if (req.payload && req.payload.role === 'admin') {
+      next(); // El usuario es admin, permitir acceso
+  } else {
+      res.status(403).json({ message: 'Acceso denegado. Se requiere rol de administrador.' });
+  }
+};
+
 // Export the middleware so that we can use it to create protected routes
 module.exports = {
   isAuthenticated,
+  isAdmin
 };

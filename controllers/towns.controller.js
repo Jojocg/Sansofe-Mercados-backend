@@ -37,7 +37,7 @@ async function getOneTown(req, res) {
 async function createTown(req, res) {
     try {
         const town = await Town.create(req.body)
-        return res.status(201).json({ message: 'Municipio creado', town: town })
+        return res.status(201).json({ message: 'Municipio creado', town })
     } catch (err) {
         /* console.log("Error while creating the town", err); */
         res.status(500).json({ message: "Error al crear el municipio" })
@@ -52,7 +52,7 @@ async function updateTown(req, res) {
     
     try {
         const updatedTown = await Town.findByIdAndUpdate(req.params.id, req.body, { new: true })
-        return res.status(200).json({ message: 'Municipio actualizado', updatedTown: updatedTown })
+        return res.status(200).json({ message: 'Municipio actualizado', updatedTown })
     } catch (err) {
         /* console.log("Error while updating the town", err); */
         res.status(500).json({ message: "Error al actualizar el municipio" })

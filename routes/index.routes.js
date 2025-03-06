@@ -6,5 +6,6 @@ router.get("/", (req, res, next) => {
 });
 
 router.use('/towns', require('./towns.routes'))
+router.use('/markets', require('./markets.routes'))
 
 module.exports = router;

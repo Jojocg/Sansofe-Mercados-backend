@@ -1,4 +1,4 @@
-const { Schema, model, mongoose } = require("mongoose");
+const { Schema, model } = require("mongoose");
 
 // TODO: Please make sure you edit the User model to whatever makes sense in this case
 const userSchema = new Schema(
@@ -19,7 +19,7 @@ const userSchema = new Schema(
       required: [true, "Name is required."],
     },
     favs: {
-      type: [mongoose.Schema.Types.ObjectId],
+      type: [Schema.Types.ObjectId],
       ref: 'Market',
       default: []
     },

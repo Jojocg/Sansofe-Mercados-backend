@@ -1,4 +1,4 @@
-const { Schema, model, mongoose } = require("mongoose");
+const { Schema, model } = require("mongoose");
 
 const marketSchema = new Schema(
   {
@@ -21,7 +21,7 @@ const marketSchema = new Schema(
       type: String
     },
     town: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'Town',
         required: true
     }
