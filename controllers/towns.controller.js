@@ -66,6 +66,17 @@ async function deleteTown(req, res) {
     }
 
     try {
+        // para verificar si existen mercados asociados a este municipio
+        const Market = require('../models/Market.model');
+        const relatedMarkets = await Market.countDocuments({ town: req.params.id });
+        
+        if (relatedMarkets > 0) {
+            return res.status(409).json({ 
+                message: `No se puede eliminar el municipio porque tiene ${relatedMarkets} mercados asociados. Elimine primero los mercados.`
+            });
+        }
+
+        // Si no hay mercados asociados, entonces se procede con la eliminación
         const town = await Town.findByIdAndDelete(req.params.id)
         return res.status(204).json({ message: 'Municipio eliminado'})
     } catch (err) {
