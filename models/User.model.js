@@ -22,6 +22,12 @@ const userSchema = new Schema(
       type: [mongoose.Schema.Types.ObjectId],
       ref: 'Market',
       default: []
+    },
+    role: {
+      type: String,
+      enum: ["user", "admin"],
+      default: "user",
+      required: true
     }
   },
   {
