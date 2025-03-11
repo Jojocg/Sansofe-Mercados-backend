@@ -49,7 +49,7 @@ async function updateUser(req, res) {
         res.status(400).json({ message: 'Specified id is not valid' });
         return;
     }
-    
+
     try {
         const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, { new: true })
         return res.status(200).json({ message: 'Municipio actualizado', updatedUser })
@@ -75,13 +75,16 @@ async function deleteUser(req, res) {
 }
 
 async function getOneProfile(req, res) {
-    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+    // Obtener el ID del usuario desde el payload del JWT
+    // que fue añadido por el middleware isAuthenticated
+    const userId = req.payload._id;
+    if (!mongoose.Types.ObjectId.isValid(userId)) {
         res.status(400).json({ message: 'Specified id is not valid' });
         return;
     }
 
     try {
-        const profile = await User.findById(req.params.id)
+        const profile = await User.findById(userId)
         if (profile) {
             return res.status(200).json(profile)
         } else {
@@ -94,13 +97,14 @@ async function getOneProfile(req, res) {
 }
 
 async function updateProfile(req, res) {
-    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+    const userId = req.payload._id;
+    if (!mongoose.Types.ObjectId.isValid(userId)) {
         res.status(400).json({ message: 'Specified id is not valid' });
         return;
     }
-    
+
     try {
-        const updatedProfile = await User.findByIdAndUpdate(req.params.id, req.body, { new: true })
+        const updatedProfile = await User.findByIdAndUpdate(userId, req.body, { new: true })
         return res.status(200).json({ message: 'Perfil actualizado', updatedProfile })
     } catch (err) {
         /* console.log("Error while updating the profile", err); */
@@ -109,13 +113,14 @@ async function updateProfile(req, res) {
 }
 
 async function deleteProfile(req, res) {
-    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+    const userId = req.payload._id;
+    if (!mongoose.Types.ObjectId.isValid(userId)) {
         res.status(400).json({ message: 'Specified id is not valid' });
         return;
     }
 
     try {
-        await User.findByIdAndDelete(req.params.id);
+        await User.findByIdAndDelete(userId);
         return res.status(204).json({ message: 'Perfil eliminado' });
     } catch (err) {
         /* console.log("Error while deleting the user", err); */
