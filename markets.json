@@ -1,0 +1,294 @@
+[{
+  "_id": {
+    "$oid": "67c9d974a39890e05ee1136f"
+  },
+  "name": "Mercado Agrícola de San Mateo",
+  "town": {
+    "$oid": "67c9d565a39890e05ee11355"
+  },
+  "__v": 0,
+  "description": "El Mercado Agrícola de San Mateo es uno de los más emblemáticos de la isla. Además de los productos alimenticios, también se pueden encontrar artesanías locales, como cestería, cerámica y tejidos, todos hechos a mano por artesanos canarios. ",
+  "image": "https://www.vegadesanmateo.es/sites/default/files/pages/03-ROF1222w.jpg",
+  "location": "C. Antonio Perera Rivero, S/N, Vega de San Mateo.",
+  "schedule": [
+    {
+      "days": [
+        "Viernes"
+      ],
+      "hours": "09:00 - 13:00",
+      "_id": {
+        "$oid": "67d06f5ff03018619ea9d6d4"
+      }
+    },
+    {
+      "days": [
+        "Viernes"
+      ],
+      "hours": "15:00 - 20:00",
+      "_id": {
+        "$oid": "67d06f5ff03018619ea9d6d5"
+      }
+    },
+    {
+      "days": [
+        "Sábado"
+      ],
+      "hours": "08:00 - 20:00",
+      "_id": {
+        "$oid": "67d06f5ff03018619ea9d6d6"
+      }
+    },
+    {
+      "days": [
+        "Domingo"
+      ],
+      "hours": "08:00 - 14:30",
+      "_id": {
+        "$oid": "67d06f5ff03018619ea9d6d7"
+      }
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "67ced1521a68e99206ee4e17"
+  },
+  "name": "Mercado de Vegueta",
+  "image": "https://marcacanaria.com/wp-content/uploads/2024/07/mercado-de-vegueta-1024x576.jpeg",
+  "location": "Calle de Mendizabal nº 1, Las Palmas de Gran Canaria",
+  "schedule": [
+    {
+      "days": [
+        "Lunes",
+        "Martes",
+        "Miércoles",
+        "Jueves"
+      ],
+      "hours": "07:00 - 14:00",
+      "_id": {
+        "$oid": "67ced1521a68e99206ee4e18"
+      }
+    },
+    {
+      "days": [
+        "Sábado",
+        "Viernes"
+      ],
+      "hours": "07:00 - 14:30",
+      "_id": {
+        "$oid": "67ced1521a68e99206ee4e19"
+      }
+    }
+  ],
+  "description": " El Mercado de Vegueta es uno de los mercados en Gran Canaria más antiguos, con una historia que se remonta al siglo XIX. Este mercado es famoso por su arquitectura y su ambiente pintoresco, pero lo que realmente lo distingue es la calidad y variedad de sus productos.",
+  "town": {
+    "$oid": "67ced05acfe54142c85d2f10"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67d05b9b2771a27a73f8cd9f"
+  },
+  "name": "Mercado del Puerto",
+  "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ffiles.123inventatuweb.com%2Facens118361%2Fimage%2Fcallelasalada_1024.jpg&f=1&nofb=1&ipt=3aa6a2c0d97538862770f7e125c5cd55850370962f5b4c6e4fde5e7fd9ba4048&ipo=images",
+  "location": "C. Albareda 76.",
+  "schedule": [
+    {
+      "days": [
+        "Martes",
+        "Jueves",
+        "Lunes",
+        "Miércoles",
+        "Viernes",
+        "Sábado"
+      ],
+      "hours": "08:30 - 14:30",
+      "_id": {
+        "$oid": "67d05b9b2771a27a73f8cda0"
+      }
+    }
+  ],
+  "description": "El Mercado del Puerto es el primer mercado de abastos de Canarias en añadir la gastronomía a su oferta, conviertiéndose así en el pionero de este formato en las islas. \nAquí podrás encontrar los productos más frescos de la ciudad y diversidad de servicios, conjuntamente con la más variada oferta gastronómica aderezada con un sinfín de actividades culturales.",
+  "town": {
+    "$oid": "67ced05acfe54142c85d2f10"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67d071b8f03018619ea9d77b"
+  },
+  "name": "Mercado Agrícola de Valleseco",
+  "image": "https://www.vallesecograncanaria.com/sites/default/files/shop/Sin%20t%C3%ADtulo00180152.jpg",
+  "location": "C. Párroco José Hernández Acosta, nº 11, Valleseco",
+  "schedule": [
+    {
+      "days": [
+        "Viernes",
+        "Sábado",
+        "Domingo"
+      ],
+      "hours": "09:00 - 14:00",
+      "_id": {
+        "$oid": "67d071b8f03018619ea9d77c"
+      }
+    }
+  ],
+  "description": "El Mercado Agrícola de Valleseco es conocido por su enfoque en la sostenibilidad y los productos ecológicos. Aquí, los visitantes pueden encontrar una amplia selección de frutas y verduras orgánicas, así como productos elaborados localmente, como mermeladas, miel y quesos.",
+  "town": {
+    "$oid": "67d070adf03018619ea9d76d"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67d0754ff03018619ea9d79f"
+  },
+  "name": "Mercadillo de Teror",
+  "image": "https://mercadillos.org/wp-content/uploads/2024/04/Alimentacion-en-el-Mercadillo-de-Teror.jpg.webp",
+  "location": "Entorno de la Basílica del Pino y Plaza de Sintes",
+  "schedule": [
+    {
+      "days": [
+        "Domingo"
+      ],
+      "hours": "08:00 - 15:00",
+      "_id": {
+        "$oid": "67d0754ff03018619ea9d7a0"
+      }
+    }
+  ],
+  "description": "El entorno de la Basílica del Pino se transforma cada domingo con la presencia del Mercadillo de Teror, uno de los mercados ambulantes más antiguos de la isla con dos siglos de historia. Aquí, los visitantes pueden comprar una amplia gama de productos de kilómetro 0, desde frutas y verduras frescas hasta quesos, embutidos, y panes artesanales. Teror es también conocido por su chorizo, un producto local que no se puede dejar de probar.",
+  "town": {
+    "$oid": "67d071e6f03018619ea9d791"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67d16290473c56d084adcfd8"
+  },
+  "name": "Mercado de Gáldar (La Recova)",
+  "image": "https://www.galdar.es/wp-content/uploads/2023/02/mercado-municipal-8-scaled.jpg",
+  "location": "C. Capitán Quesada, nº 29, Gáldar.",
+  "schedule": [
+    {
+      "days": [
+        "Lunes",
+        "Martes",
+        "Miércoles",
+        "Jueves",
+        "Viernes",
+        "Sábado"
+      ],
+      "hours": "07:00 - 14:00",
+      "_id": {
+        "$oid": "67d16290473c56d084adcfd9"
+      }
+    },
+    {
+      "days": [
+        "Jueves"
+      ],
+      "hours": "16:00 -19:30",
+      "_id": {
+        "$oid": "67d16290473c56d084adcfda"
+      }
+    }
+  ],
+  "description": "Construido alrededor de 1945, el Mercado Municipal sigue cumpliendo con el objetivo de impulsar el mercado tradicional frente a las grandes superficies. La entrada y puerta principal conservan las rejas de hierro originales y en su interior, cubriendo la pared del fondo, está la obra del artista galdense Diego Higueras que realizó en homenaje al pintor Antonio Padrón.",
+  "town": {
+    "$oid": "67d14cf8f3b8b00d7d80ac9e"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67d16616473c56d084add016"
+  },
+  "name": "Mercado de Guía",
+  "image": "https://mercadodeguia.es/wp-content/uploads/2023/10/DSCF9212-1-2048x1365.jpg",
+  "location": "Rotonda de la Atalaya, Santa María de Guía.",
+  "schedule": [
+    {
+      "days": [
+        "Viernes",
+        "Sábado",
+        "Domingo"
+      ],
+      "hours": "08:00 - 15:00",
+      "_id": {
+        "$oid": "67d16616473c56d084add017"
+      }
+    }
+  ],
+  "description": "El Mercado de Guía cuenta en su primera planta con puestos de venta directa que exhiben la riqueza de la región. También dispone de una acogedora cafetería y un restaurante, que ofrecen un refugio para aquellos que buscan sabores inolvidables. \nLa segunda planta, además de albergar el Gastromercado (abierto viernes y sábados también en horario de noche), es un escenario para espectáculos de música en vivo que llenan el aire de armonía y emoción.",
+  "town": {
+    "$oid": "67d14d04f3b8b00d7d80aca1"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67d1724c473c56d084add10a"
+  },
+  "name": "Mercado Municipal de Telde",
+  "image": "https://estaticos-cdn.prensaiberica.es/clip/c91be70e-f79b-48be-97f4-4f86f0515891_source-aspect-ratio_default_0.jpg",
+  "location": "C. Joan Miró, S/N, Telde.",
+  "schedule": [
+    {
+      "days": [
+        "Lunes",
+        "Martes",
+        "Miércoles",
+        "Jueves",
+        "Viernes",
+        "Sábado"
+      ],
+      "hours": "08:00 - 14:00",
+      "_id": {
+        "$oid": "67d1724c473c56d084add10b"
+      }
+    }
+  ],
+  "description": "Ubicado actualmente en el Área Polivalente de Narea, ofrece una amplia variedad de productos. ",
+  "town": {
+    "$oid": "67d14d0af3b8b00d7d80aca4"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67d17663473c56d084add136"
+  },
+  "name": "Mercado Municipal de Santa Brígida",
+  "image": "https://www.santabrigida.es/wp-content/uploads/2025/02/WhatsApp-Image-2025-02-22-at-12.49.20-1-1024x768.jpeg",
+  "location": "Paseo del Guiniguada, Sta Brígida.",
+  "schedule": [
+    {
+      "days": [
+        "Viernes",
+        "Sábado"
+      ],
+      "hours": "08:00 - 20:00",
+      "_id": {
+        "$oid": "67d17663473c56d084add137"
+      }
+    },
+    {
+      "days": [
+        "Domingo"
+      ],
+      "hours": "08:00 - 14:00",
+      "_id": {
+        "$oid": "67d17663473c56d084add138"
+      }
+    }
+  ],
+  "description": "El mercado se encuentra en el casco antiguo de Santa Brígida, rodeado de un entorno natural y tradicional. Cuenta con una zona central con parque infantil, lo que lo convierte en un lugar ideal para visitar en familia.",
+  "town": {
+    "$oid": "67d17409473c56d084add128"
+  },
+  "__v": 0
+}]

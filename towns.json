@@ -1,0 +1,64 @@
+[{
+  "_id": {
+    "$oid": "67c9d565a39890e05ee11355"
+  },
+  "name": "Vega de San Mateo",
+  "image": "https://www.vegadesanmateo.es/sites/default/files/pages/cabecera_sanmateo.jpg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67ced05acfe54142c85d2f10"
+  },
+  "name": "Las Palmas de Gran Canaria",
+  "image": "https://images.unsplash.com/photo-1638975887957-2f448ced500b?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67d070adf03018619ea9d76d"
+  },
+  "name": "Valleseco",
+  "image": "https://www.vallesecograncanaria.com/sites/default/files/shop/Valsendero%202.JPG",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67d071e6f03018619ea9d791"
+  },
+  "name": "Teror",
+  "image": "https://images.unsplash.com/photo-1587896674919-6d6e91751318?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67d14cf8f3b8b00d7d80ac9e"
+  },
+  "name": "Gáldar",
+  "image": "https://canariasislasafortunadas.com/wp-content/uploads/Plaza-Iglesia-Galdar-Gran-Canarias.jpg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67d14d04f3b8b00d7d80aca1"
+  },
+  "name": "Santa María de Guía",
+  "image": "https://turismo.santamariadeguia.es/wp-content/uploads/2020/09/p19de35g721ih713ha1id8tq1bb74.jpg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67d14d0af3b8b00d7d80aca4"
+  },
+  "name": "Telde",
+  "image": "https://turismo.telde.es/wp-content/uploads/2024/03/acueducto-san-francisco.jpg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67d17409473c56d084add128"
+  },
+  "name": "Santa Brígida",
+  "image": "https://www.atlasruraldegrancanaria.com/wp-content/uploads/Santa_Brigida02-768x512.jpg",
+  "__v": 0
+}]
