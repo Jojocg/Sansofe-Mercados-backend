@@ -1,5 +1,6 @@
 const rateLimit = require('express-rate-limit');
 const { body, validationResult } = require('express-validator');
+const mongoose = require('mongoose');
 
 // Rate limiter para la API de IA
 const aiRateLimiter = rateLimit({
@@ -30,15 +31,21 @@ const validateAIRequest = [
         .withMessage('La consulta no puede estar vacía')
         .isString()
         .withMessage('La consulta debe ser texto')
-        .isLength({ min: 3, max: 500 })
-        .withMessage('La consulta debe tener entre 3 y 500 caracteres'),
+        .isLength({ min: 2, max: 500 })
+        .withMessage('La consulta debe tener entre 2 y 500 caracteres'),
     body('marketId')
-        .optional()
-        .isMongoId()
+        .optional({ nullable: true }) // Permite null
+        .custom((value) => {
+            if (value === null || value === '') return true;
+            return mongoose.Types.ObjectId.isValid(value);
+        })
         .withMessage('ID de mercado inválido'),
     body('townId')
-        .optional()
-        .isMongoId()
+        .optional({ nullable: true }) // Permite null
+        .custom((value) => {
+            if (value === null || value === '') return true;
+            return mongoose.Types.ObjectId.isValid(value);
+        })
         .withMessage('ID de municipio inválido'),
     (req, res, next) => {
         const errors = validationResult(req);

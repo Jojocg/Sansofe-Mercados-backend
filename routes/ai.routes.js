@@ -49,7 +49,12 @@ router.post('/assistant', aiRateLimiter, validateAIRequest, async (req, res) => 
       }
       contextData = `
         Mercados en el municipio de ${markets[0]?.town.name || 'este municipio'}:
-        ${markets.map(m => `- ${m.name}: ${m.description} Ubicado en ${m.location}.`).join('\n')}
+        ${markets.map(m => `
+          - ${m.name}:
+            Ubicación: ${m.location}
+            Horario: ${m.schedule.map(s => `${s.days.join(', ')} de ${s.hours}`).join(' y ')}
+            Descripción: ${m.description}
+          `).join('\n')}
       `;
       availableMarkets = markets.map(m => m.name);
     }
@@ -123,7 +128,7 @@ router.post('/assistant', aiRateLimiter, validateAIRequest, async (req, res) => 
 
     res.json({ response });
   } catch (error) {
-    console.error('Error al procesar consulta con Gemini:', error);
+    /* console.error('Error al procesar consulta con Gemini:', error); */
     res.status(500).json({ error: 'Error al procesar la consulta' });
   }
 });
