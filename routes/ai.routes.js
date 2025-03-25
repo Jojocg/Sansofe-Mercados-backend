@@ -3,6 +3,7 @@ const router = express.Router();
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 const Market = require('../models/Market.model');
 const Town = require('../models/Town.model');
+const { aiRateLimiter, validateAIRequest } = require('../middleware/express.middleware');
 
 // Configurar Gemini API
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
@@ -11,8 +12,8 @@ const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
 // Cache simple
 const responseCache = new Map();
 
-// Endpoint para el asistente virtual
-router.post('/assistant', async (req, res) => {
+// Endpoint para el asistente virtual - con rate limiting y validación
+router.post('/assistant', aiRateLimiter, validateAIRequest, async (req, res) => {
   try {
     const { query, marketId, townId } = req.body;
 

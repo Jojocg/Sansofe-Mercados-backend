@@ -22,7 +22,8 @@ require("./config")(app);
 
 // 👇 Start handling routes here
 const indexRoutes = require("./routes/index.routes");
-app.use("/api", indexRoutes);
+const { generalLimiter } = require("./middleware/express.middleware");
+app.use("/api", generalLimiter, indexRoutes);
 
 const authRoutes = require("./routes/auth.routes");
 app.use("/auth", authRoutes);
