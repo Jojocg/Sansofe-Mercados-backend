@@ -1,23 +1,45 @@
 const rateLimit = require('express-rate-limit');
 const { body, validationResult } = require('express-validator');
 const mongoose = require('mongoose');
+const { RateLimitError } = require('../error-handling/error.types');
 
 // Rate limiter para la API de IA
 const aiRateLimiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
-    limit: 20, // limit each IP to 20 requests per windowMs
-    message: 'Demasiadas consultas realizadas. Por favor, inténtalo de nuevo más tarde.',
+    limit: 20, //limit each IP to 20 requests per windowMs
+    handler: (req, res) => {
+        const error = new RateLimitError(
+            'Has alcanzado el límite de consultas a la IA',
+            15 * 60 // tiempo en segundos hasta reset
+        );
+        res.status(429).json({
+            error: true,
+            type: error.type,
+            message: error.message,
+            waitTime: error.waitTime,
+            retryAfter: Math.ceil(error.waitTime / 60) // minutos hasta próximo intento
+        });
+    },
     standardHeaders: true,
     legacyHeaders: false,
 });
 
 // Limitador general para toda la API
 const generalLimiter = rateLimit({
-    windowMs: 15 * 60 * 1000, // 15 minutos
+    windowMs: 15 * 60 * 1000,
     limit: 40,
-    message: {
-        error: true,
-        message: 'Demasiadas peticiones realizadas. Por favor, inténtalo de nuevo más tarde.'
+    handler: (req, res) => {
+        const error = new RateLimitError(
+            'Has alcanzado el límite de peticiones a la API',
+            15 * 60
+        );
+        res.status(429).json({
+            error: true,
+            type: error.type,
+            message: error.message,
+            waitTime: error.waitTime,
+            retryAfter: Math.ceil(error.waitTime / 60)
+        });
     },
     standardHeaders: true,
     legacyHeaders: false,
