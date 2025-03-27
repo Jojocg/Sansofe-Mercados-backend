@@ -1,7 +1,7 @@
 const rateLimit = require('express-rate-limit');
 const { body, validationResult } = require('express-validator');
 const mongoose = require('mongoose');
-const { RateLimitError } = require('../error-handling/error.types');
+const { RateLimitError, ValidationError } = require('../error-handling/error.types');
 
 // Rate limiter para la API de IA
 const aiRateLimiter = rateLimit({
@@ -59,22 +59,38 @@ const validateAIRequest = [
         .optional({ nullable: true }) // Permite null
         .custom((value) => {
             if (value === null || value === '') return true;
-            return mongoose.Types.ObjectId.isValid(value);
-        })
-        .withMessage('ID de mercado inválido'),
+            if (!mongoose.Types.ObjectId.isValid(value)) {
+                throw new Error('ID de mercado inválido');
+            }
+            return true;
+        }),
     body('townId')
         .optional({ nullable: true }) // Permite null
         .custom((value) => {
             if (value === null || value === '') return true;
-            return mongoose.Types.ObjectId.isValid(value);
-        })
-        .withMessage('ID de municipio inválido'),
+            if (!mongoose.Types.ObjectId.isValid(value)) {
+                throw new Error('ID de municipio inválido');
+            }
+            return true;
+        }),
     (req, res, next) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            return res.status(400).json({
-                error: 'Error de validación',
-                details: errors.array()
+            const validationError = new ValidationError(
+                'Error en la validación de la consulta',
+                {
+                    fields: errors.array().map(err => ({
+                        field: err.path,
+                        value: err.value,
+                        message: err.msg
+                    }))
+                }
+            );
+            return res.status(validationError.statusCode).json({
+                error: true,
+                type: validationError.type,
+                message: validationError.message,
+                details: validationError.details
             });
         }
         next();
