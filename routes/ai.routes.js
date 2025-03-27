@@ -4,6 +4,7 @@ const { GoogleGenerativeAI } = require('@google/generative-ai');
 const Market = require('../models/Market.model');
 const Town = require('../models/Town.model');
 const { aiRateLimiter, validateAIRequest } = require('../middleware/express.middleware');
+const { AIServiceError, ValidationError } = require('../error-handling/error.types');
 
 // Configurar Gemini API
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
@@ -32,7 +33,7 @@ router.post('/assistant', aiRateLimiter, validateAIRequest, async (req, res) => 
     if (marketId) {
       const market = await Market.findById(marketId).populate('town');
       if (!market) {
-        return res.json({ response: "Lo siento, no puedo encontrar información sobre ese mercado específico en nuestra base de datos." });
+        throw new ValidationError('No he podido encontrar información sobre ese mercado específico en nuestra base de datos', { marketId });
       }
       contextData = `
         Información del mercado: ${market.name} ubicado en ${market.location}, ${market.town.name}. 
@@ -45,7 +46,7 @@ router.post('/assistant', aiRateLimiter, validateAIRequest, async (req, res) => 
     else if (townId) {
       const markets = await Market.find({ town: townId }).populate('town');
       if (markets.length === 0) {
-        return res.json({ response: "Lo siento, no tenemos información sobre mercados en ese municipio en nuestra base de datos." });
+        throw new ValidationError('No tenemos información sobre mercados en este municipio en nuestra base de datos', { townId });
       }
       contextData = `
         Mercados en el municipio de ${markets[0]?.town.name || 'este municipio'}:
@@ -115,21 +116,43 @@ router.post('/assistant', aiRateLimiter, validateAIRequest, async (req, res) => 
 
     /* console.log('Prompt enviado a Gemini:', prompt); */ // Log para depuración
 
-    // Llamar a Gemini API
-    const result = await model.generateContent(prompt);
-    const response = result.response.text();
+    // Llamar a Gemini API 
+    try {
+      const result = await model.generateContent(prompt);
+      const response = result.response.text();
 
-    /* console.log('Respuesta de Gemini:', response); */ // Log para depuración
+      /* console.log('Respuesta de Gemini:', response); */ // Log para depuración
 
-    // Guardar en caché (solo respuestas menores a cierto tamaño para no saturar memoria)
-    if (response.length < 5000) {
-      responseCache.set(cacheKey, response);
+      // Guardar en caché (solo respuestas menores a cierto tamaño para no saturar memoria)
+      if (response.length < 5000) {
+        responseCache.set(cacheKey, response);
+      }
+
+      return res.json({ response });
+    } catch (aiError) {
+      throw new AIServiceError(
+        'Error al procesar la consulta con la IA',
+        { originalError: aiError.message }
+      );
     }
 
-    res.json({ response });
   } catch (error) {
-    /* console.error('Error al procesar consulta con Gemini:', error); */
-    res.status(500).json({ error: 'Error al procesar la consulta' });
+    if (error.type) {
+      // Errores personalizados
+      return res.status(error.statusCode).json({
+        error: true,
+        type: error.type,
+        message: error.message,
+        details: error.details
+      });
+    }
+    // Errores no manejados
+    /* console.error('Error no manejado:', error); */
+    res.status(500).json({
+      error: true,
+      type: 'UnknownError',
+      message: 'Error interno del servidor'
+    });
   }
 });
 
