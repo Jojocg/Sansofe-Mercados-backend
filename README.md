@@ -68,3 +68,80 @@ sansofe-project-server/
 ├── package.json        # Dependencies and scripts
 └── server.js           # Entry point
 ```
+
+## AI Integration
+
+### Overview
+The project integrates with Google's Gemini AI to provide intelligent responses about local markets in Gran Canaria. This integration enhances user experience by offering:
+- Natural language interactions about markets
+- Context-aware responses based on specific markets or towns
+- Intelligent filtering of market information
+
+### Features
+- 🤖 **Smart Assistant**: Provides detailed information about local markets
+- 🔒 **Rate Limiting**: Protects the AI service with 20 requests per IP per 15 minutes
+- ⚡ **Response Caching**: Improves performance for repeated queries
+- 🔍 **Context-Aware**: Tailored responses based on specific market or town context
+
+### Technical Implementation
+<details>
+<summary>AI Request Flow</summary>
+
+1. **Request Validation**
+   ```javascript
+   POST /api/ai/assistant
+   {
+     "query": "string",     // Required: User's question
+     "marketId": "string",  // Optional: Specific market
+     "townId": "string"     // Optional: Specific town
+   }
+   ```
+
+2. **Response Format**
+   ```javascript
+   {
+     "response": "string"   // AI-generated response
+   }
+   ```
+
+3. **Error Handling**
+   ```javascript
+   {
+     "error": true,
+     "type": "ErrorType",
+     "message": "Error description",
+     "details": {}
+   }
+   ```
+</details>
+
+<details>
+<summary>Security Measures</summary>
+
+- Request validation and sanitization
+- Rate limiting protection
+- Input length restrictions
+- Context-based response filtering
+</details>
+
+### Dependencies Added
+- `@google/generative-ai`: Gemini AI integration
+- `express-rate-limit`: API request limiting
+- `express-validator`: Request validation
+
+### Environment Variables
+Add to your `.env`:
+```
+GEMINI_API_KEY=your_gemini_api_key
+```
+
+### Usage Limits
+- 20 AI requests per IP address per 15 minutes
+- Maximum query length: 500 characters
+- Response caching for queries under 5000 characters
+
+## Additional Documentation
+For more details about the AI integration, check:
+- [Google Gemini AI Documentation](https://ai.google.dev/docs)
+- [Express Rate Limit](https://github.com/express-rate-limit/express-rate-limit)
+- [Express Validator](https://express-validator.github.io/)
